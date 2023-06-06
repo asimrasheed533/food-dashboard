@@ -39,32 +39,6 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
-      <div className="dashboard__container__right">
-        <div className="dashboard__container__right__title">Latest Orders</div>
-        <div className="dashboard__container__right__content">
-          <DashboardOrderEntry />
-          <DashboardOrderEntry />
-          <DashboardOrderEntry />
-          <DashboardOrderEntry />
-          <DashboardOrderEntry />
-          <DashboardOrderEntry />
-          <DashboardOrderEntry />
-          <DashboardOrderEntry />
-          <DashboardOrderEntry />
-          <DashboardOrderEntry />
-          <DashboardOrderEntry />
-          <DashboardOrderEntry />
-          <DashboardOrderEntry />
-          <DashboardOrderEntry />
-          <DashboardOrderEntry />
-          <DashboardOrderEntry />
-          <DashboardOrderEntry />
-          <DashboardOrderEntry />
-          <DashboardOrderEntry />
-          <DashboardOrderEntry />
-          <DashboardOrderEntry />
-        </div>
-      </div>
     </div>
   );
 }

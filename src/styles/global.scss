@@ -13,16 +13,16 @@ html[data-theme="dark"] {
   --backgroundDarkColor: #242424;
   --color: #f1f1f1;
   --colorLight: #afafaf;
-  --colorReverse: black;
+  --colorReverse: #00a827;
   --colorLightReverse: #333333;
   --transparentColor: rgba(26, 26, 26, 0.9);
   --boxShadow: rgba(0, 0, 0, 0.459);
 }
 
 :root {
-  --primary: #ca3434;
-  --primaryDark: #882d2d;
-  --secondary: #363636;
+  --primary: #00a827;
+  --primaryDark: #23963e;
+  --secondary: #20c068;
   --secondaryDark: #dbd6d3;
 }
 *,
