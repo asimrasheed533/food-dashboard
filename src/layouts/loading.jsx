@@ -1,4 +1,4 @@
-import { SyncLoader } from "react-spinners";
+import { GridLoader } from "react-spinners";
 
 export default function Loading({ dashboard }) {
   return (
@@ -10,7 +10,7 @@ export default function Loading({ dashboard }) {
           : { justifyContent: "center", alignItems: "center", height: "100vh" }
       }
     >
-      <SyncLoader color="red" size={10} />
+      <GridLoader color="#5fd636" size={30} />
       <div style={{ marginTop: 20 }}>Loading</div>
     </div>
   );
