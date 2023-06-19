@@ -94,9 +94,9 @@ export default function ProductEdit() {
           <Input
             type="number"
             label="Edit Stock"
-            value={price}
+            value={stock}
             onChange={(e) => setStock(e.target.value)}
-            placeholder="Enter Stock"
+            placeholder="Edit Stock"
           />
         </div>
         <div className="product__form__col__panel">
