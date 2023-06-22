@@ -12,6 +12,7 @@ import Loading from "../../../layouts/loading";
 import { TableEntryDescription } from "../../../components";
 import axios from "../../../utils/axios";
 import { useLocation } from "react-router-dom";
+import { getCategoryName } from "../../../utils/constants";
 
 export default function Products() {
   const location = useLocation();
@@ -45,18 +46,6 @@ export default function Products() {
   return (
     <div className="container__main__content__listing">
       <div className="container__main__content__listing__header">
-        <div className="container__main__content__listing__header__left">
-          <div className="container__main__content__listing__header__left__search">
-            <input
-              type="text"
-              placeholder="Search"
-              onChange={(e) => {
-                setQuery(e.target.value);
-              }}
-              className="container__main__content__listing__header__left__search__field"
-            />
-          </div>
-        </div>
         <div className="container__main__content__listing__header__right">
           <Link
             to={location.pathname.toLowerCase() + "/add"}
@@ -74,9 +63,7 @@ export default function Products() {
           <div className="container__main__content__listing__table__header__entry">
             Status
           </div>
-          <div className="container__main__content__listing__table__header__entry">
-            Featured
-          </div>
+
           <div className="container__main__content__listing__table__header__entry">
             Image
           </div>
@@ -155,32 +142,10 @@ function TableEntry({ product, getData }) {
             });
         }}
       />
-      <TableEntryStatus
-        defaultValue={{
-          value: product.isFeatured,
-          label: product.isFeatured ? "Featured" : "Not Featured",
-        }}
-        options={[
-          {
-            value: true,
-            label: "Featured",
-          },
-          {
-            value: false,
-            label: "Not Featured",
-          },
-        ]}
-        onChange={(e) => {
-          axios
-            .put(`products/${product._id}`, {
-              isFeatured: e.value,
-            })
-            .then(() => {
-              getData();
-            });
-        }}
+
+      <TableEntryImage
+        src={import.meta.env.VITE_CLOUDNAIRY_API_URL + product?.img}
       />
-      <TableEntryImage src={product.img} />
       <TableEntryText className="container__main__content__listing__table__content__list__entry">
         {product.name}
       </TableEntryText>
@@ -194,7 +159,7 @@ function TableEntry({ product, getData }) {
         {product.stock}
       </TableEntryText>
       <TableEntryText className="container__main__content__listing__table__content__list__entry">
-        {product.category}
+        {getCategoryName(product.category)}
       </TableEntryText>
       <TableEntryDescription className="container__main__content__listing__table__content__list__entry">
         {product?.description}

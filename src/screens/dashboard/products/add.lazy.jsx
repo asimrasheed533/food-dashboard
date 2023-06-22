@@ -1,12 +1,14 @@
 import { Input, Select, Textarea } from "components";
 
-import { Link } from "router";
-import { useState } from "react";
-import { useBackLocation } from "global";
+import ImageUploaderSingle from "../../../components/ImageUploaderSingle";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "../../../utils/axios";
-import { ImageUploaderSingle } from "../../../components/ImageUploaderSingle";
+import { useBackLocation } from "global";
+import { useState } from "react";
+import { categories } from "../../../utils/constants";
 
 export default function ProductAdd() {
+  const navigate = useNavigate();
   const backLocation = useBackLocation();
 
   const [name, setName] = useState("");
@@ -17,31 +19,32 @@ export default function ProductAdd() {
 
   const [price, setPrice] = useState("");
 
+  const [stock, setStock] = useState("");
+
   const [category, setCategory] = useState({});
 
-  const [images, setImages] = useState([]);
-
-  const [stock, setStock] = useState("");
+  const [image, setImage] = useState("");
 
   function handleSubmit(e) {
     axios
-
       .post("products", {
         name,
         brand,
         description,
         price,
-        category: category.value,
-        img: images,
         stock,
+        category: category.value,
+        img: image,
       })
       .then((res) => {
         alert("Product added successfully");
+        navigate(backLocation);
       })
       .catch((err) => {
         console.error(err);
       });
   }
+
   return (
     <div className="product__form">
       <div className="product__form__col">
@@ -49,7 +52,7 @@ export default function ProductAdd() {
           <Input
             type="text"
             label="Name"
-            placeholder="Enter name"
+            placeholder="Enter Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
@@ -69,29 +72,27 @@ export default function ProductAdd() {
         </div>
         <div className="product__form__col__panel">
           <div className="product__form__col__panel__heading">Pricing</div>
-
           <Input
             type="number"
-            label="Selling price"
-            placeholder="Enter selling price"
+            label="Selling Price"
             value={price}
             onChange={(e) => setPrice(e.target.value)}
+            placeholder="Enter selling price"
           />
           <Input
             type="number"
-            label="Add Stock"
-            placeholder="Enter stock"
+            label="Enter Stock"
             value={stock}
             onChange={(e) => setStock(e.target.value)}
+            placeholder="Enter stock"
           />
         </div>
         <div className="product__form__col__panel">
-          <div className="product__form__col__panel__heading">Media</div>
-
+          <div className="product__form__col__panel__heading">Image</div>
           <ImageUploaderSingle
-            label="Images"
-            images={images}
-            setImages={setImages}
+            label="Image"
+            value={image}
+            onChange={(e) => setImage(e)}
           />
         </div>
       </div>
@@ -102,27 +103,25 @@ export default function ProductAdd() {
             padding: "2em",
           }}
         >
-          <Link
-            to={backLocation}
-            className="container__main__content__details__buttons__button container__main__content__details__buttons__primary"
+          <button
             onClick={handleSubmit}
+            className="container__main__content__details__buttons__button container__main__content__details__buttons__primary"
           >
             Add New Product
-          </Link>
+          </button>
           <Link
             to={backLocation}
             className="container__main__content__details__buttons__button container__main__content__details__buttons__secondary"
           >
-            Delete
+            Discard Changes
           </Link>
         </div>
         <div className="product__form__col__panel">
           <Select
             label="Product Category"
-            options={[
-              { value: "Yes", label: "Yes" },
-              { value: "No", label: "No" },
-            ]}
+            options={categories}
+            value={category}
+            onChange={(e) => setCategory(e)}
           />
         </div>
       </div>

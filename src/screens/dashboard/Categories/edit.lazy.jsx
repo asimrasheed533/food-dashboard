@@ -1,40 +1,44 @@
-import { Input, Select, Textarea } from "components";
-
+import ImageUploaderSingle from "../../../components/ImageUploaderSingle";
+import { Input } from "components";
 import { Link } from "router";
+import axios from "../../../utils/axios";
 import { useBackLocation } from "global";
+import { useLocation } from "react-router-dom";
 import { useState } from "react";
-import { ImageUploaderSingle } from "../../../components/ImageUploaderSingle";
 
 export default function CategorieEdit() {
-  const [image, setImage] = useState(null);
+  const { state } = useLocation();
+  const [image, setImage] = useState(state.img);
+  const [name, setName] = useState(state.name);
   const backLocation = useBackLocation();
   return (
     <div className="container__main__content__details">
       <div className="container__main__content__details__main container__main__content__details__main__special">
-        <Input type="text" label="Name" placeholder="Enter Name Here" />
-        <Textarea label="Description" placeholder="Enter Description" />
-        <Select
-          label="Parent Category"
-          isMulti
-          placeholder="Enter Parent Category"
-          options={[
-            { value: "1", label: "1" },
-            { value: "2", label: "2" },
-            { value: "3", label: "3" },
-            { value: "4", label: "4" },
-            { value: "5", label: "5" },
-            { value: "6", label: "6" },
-            { value: "7", label: "7" },
-            { value: "8", label: "8" },
-            { value: "9", label: "9" },
-          ]}
+        <Input
+          type="text"
+          label="Name"
+          placeholder="Enter Name Here"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
         />
-        <ImageUploaderSingle label="Image" image={image} setImage={setImage} />
+        <ImageUploaderSingle
+          label="Image"
+          value={image}
+          onChange={(e) => {
+            setImage(e);
+          }}
+        />
       </div>
 
       <div className="container__main__content__details__buttons">
         <Link
           to={backLocation}
+          onClick={() => {
+            axios.put("categories/" + state._id, {
+              name,
+              img: image,
+            });
+          }}
           className="container__main__content__details__buttons__button container__main__content__details__buttons__primary"
         >
           Edit
