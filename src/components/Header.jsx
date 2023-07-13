@@ -2,11 +2,8 @@ import { ArrowLeft, ChevronDown, LogOut, Menu, User } from "react-feather";
 import { Fragment, useEffect, useState } from "react";
 import { sidebarEnteries, userAtom } from "global";
 import { useLocation, useNavigate } from "react-router-dom";
-
-// import Avatar from "./Avatar";
 import ClickAwayListener from "react-click-away-listener";
 import { Link } from "router";
-import { ThemeSwitch } from "components";
 import { useAtom } from "jotai";
 
 export default function Header({ setSidebarOpen }) {
@@ -109,15 +106,6 @@ export default function Header({ setSidebarOpen }) {
               }}
             >
               <div className="container__main__header__right__panel__content">
-                {/* <Link
-                  to="/dashboard/profile"
-                  replace={true}
-                  className="container__main__header__right__panel__content__entry"
-                  onClick={() => setProfilePanelOpen(false)}
-                >
-                  <User size={20} color="currentColor" />
-                  Profile
-                </Link> */}
                 <Link
                   to="/"
                   onClick={() => setUser(null)}
@@ -131,9 +119,9 @@ export default function Header({ setSidebarOpen }) {
             </ClickAwayListener>
           )}
         </div>
-        <div className="container__main__header__right__button">
+        {/* <div className="container__main__header__right__button">
           <ThemeSwitch />
-        </div>
+        </div> */}
       </div>
     </div>
   );
