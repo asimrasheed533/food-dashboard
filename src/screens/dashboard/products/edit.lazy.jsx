@@ -17,7 +17,7 @@ export default function ProductEdit() {
 
   const [description, setDescription] = useState("");
 
-  const [price, setPrice] = useState("");
+  const [time, setTime] = useState("");
 
   const [category, setCategory] = useState({});
 
@@ -30,7 +30,7 @@ export default function ProductEdit() {
       setName(state.name);
       setBrand(state.brand);
       setDescription(state.description);
-      setPrice(state.price);
+      setTime(state.time);
       setStock(state.stock);
       setCategory({
         label: getCategoryName(state.category),
@@ -46,7 +46,7 @@ export default function ProductEdit() {
         name,
         brand,
         description,
-        price,
+        time,
         category: category.value,
         img: image,
       })
@@ -85,13 +85,13 @@ export default function ProductEdit() {
           />
         </div>
         <div className="product__form__col__panel">
-          <div className="product__form__col__panel__heading">Pricing</div>
+          <div className="product__form__col__panel__heading">Time To Cook</div>
           <Input
-            type="number"
-            label="Selling price"
-            value={price}
-            onChange={(e) => setPrice(e.target.value)}
-            placeholder="Enter selling price"
+            type="text"
+            label="Time to cook"
+            value={time}
+            onChange={(e) => setTime(e.target.value)}
+            placeholder="Enter time to cook"
           />
           <Input
             type="number"

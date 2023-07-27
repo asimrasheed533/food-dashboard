@@ -74,7 +74,7 @@ export default function Products() {
             Brand
           </div>
           <div className="container__main__content__listing__table__header__entry">
-            Price
+            Time to cook
           </div>
 
           <div className="container__main__content__listing__table__header__entry">
@@ -153,7 +153,7 @@ function TableEntry({ product, getData }) {
         {product.brand}
       </TableEntryText>
       <TableEntryText className="container__main__content__listing__table__content__list__entry">
-        {product.price}
+        {product.time}
       </TableEntryText>
       <TableEntryText className="container__main__content__listing__table__content__list__entry">
         {product.stock}
