@@ -76,6 +76,7 @@ export default function Products() {
           <div className="container__main__content__listing__table__header__entry">
             Time to cook
           </div>
+          
 
           <div className="container__main__content__listing__table__header__entry">
             Stock
@@ -155,6 +156,7 @@ function TableEntry({ product, getData }) {
       <TableEntryText className="container__main__content__listing__table__content__list__entry">
         {product.time}
       </TableEntryText>
+      
       <TableEntryText className="container__main__content__listing__table__content__list__entry">
         {product.stock}
       </TableEntryText>
