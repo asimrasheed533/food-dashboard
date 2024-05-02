@@ -75,9 +75,7 @@ function TableEntry({ item }) {
         />
       </div>
       <TableEntryText>{item?.name}</TableEntryText>
-      <TableEntryImage
-        src={import.meta.env.VITE_CLOUDNAIRY_API_URL + item?.img}
-      />
+      <TableEntryImage src={item?.img} />
     </div>
   );
 }
